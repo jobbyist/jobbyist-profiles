@@ -8,6 +8,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Builder from "./pages/Builder";
 import BuilderNew from "./pages/BuilderNew";
+import PublishedResume from "./pages/PublishedResume";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/builder" element={<Builder />} />
           <Route path="/builder/:id" element={<BuilderNew />} />
+          <Route path="/resume/:domain" element={<PublishedResume />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

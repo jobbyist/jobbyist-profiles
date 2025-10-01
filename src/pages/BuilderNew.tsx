@@ -10,13 +10,15 @@ import { ExperienceForm, Experience } from "@/components/builder/ExperienceForm"
 import { EducationForm, Education } from "@/components/builder/EducationForm";
 import { SkillsForm } from "@/components/builder/SkillsForm";
 import { ResumePreview } from "@/components/builder/ResumePreview";
-import { Download, Home, Save } from "lucide-react";
+import { PublishWebsiteDialog } from "@/components/builder/PublishWebsiteDialog";
+import { Download, Home, Save, CheckCircle, ChevronDown } from "lucide-react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const Builder = () => {
   const { id } = useParams();
@@ -39,6 +41,7 @@ const Builder = () => {
   const [skills, setSkills] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showPublishDialog, setShowPublishDialog] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -208,6 +211,10 @@ const Builder = () => {
     }
   };
 
+  const handlePublishWebsite = () => {
+    setShowPublishDialog(true);
+  };
+
   if (loading || authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -253,10 +260,25 @@ const Builder = () => {
                 <Save className="w-4 h-4 mr-2" />
                 {saving ? "Saving..." : "Save"}
               </Button>
-              <Button onClick={exportToPDF}>
-                <Download className="w-4 h-4 mr-2" />
-                PDF
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button>
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Finish
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={exportToPDF}>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download as a PDF
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handlePublishWebsite}>
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Publish as a website
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
@@ -310,6 +332,19 @@ const Builder = () => {
           </div>
         </div>
       </div>
+
+      <PublishWebsiteDialog
+        open={showPublishDialog}
+        onOpenChange={setShowPublishDialog}
+        resumeId={id || ""}
+        resumeData={{
+          personalInfo,
+          experiences,
+          education,
+          skills,
+          templateId
+        }}
+      />
     </div>
   );
 };
