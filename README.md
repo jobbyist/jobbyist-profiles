@@ -4,6 +4,26 @@
 
 **URL**: https://lovable.dev/projects/ca7da371-b69b-4a00-b0d2-ef38af1e2378
 
+## Features
+
+### 🚀 New: Domain Registration & Website Publishing
+
+Publish your resume as a professional website with a custom `.me` or `.cv` domain!
+
+- **Finish Button**: Choose to download as PDF or publish as a website
+- **Domain Registration**: Register `.me` or `.cv` domains via Name.com API
+- **Professional Templates**: Clean, responsive HTML websites generated from your resume
+- **Real-time Availability**: Check domain availability before registration
+
+[Read more about this feature →](./DOMAIN_PUBLISHING.md)
+
+### Other Features
+
+- **AI-Powered Content**: Get intelligent suggestions for resume content
+- **Professional Templates**: Multiple ATS-friendly resume templates
+- **PDF Export**: Download high-quality PDFs
+- **Live Preview**: See changes in real-time as you edit
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
