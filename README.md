@@ -79,6 +79,38 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- Supabase (Backend, Auth, Database, Edge Functions)
+
+## Backend & Database
+
+This project uses Supabase for:
+- **Authentication**: User authentication and authorization
+- **Database**: PostgreSQL database with Row Level Security
+- **Edge Functions**: Serverless functions for AI assistance, domain checking, and website publishing
+- **Storage**: File storage for resume assets
+
+### Supabase Deployment
+
+For detailed instructions on deploying edge functions and database migrations to Supabase, see:
+
+**[→ Supabase Deployment Guide](./SUPABASE_DEPLOYMENT.md)**
+
+Quick commands:
+```bash
+# Link to Supabase project
+npm run supabase:link
+
+# Start local Supabase
+npm run supabase:start
+
+# Deploy migrations
+npm run supabase:db:push
+
+# Deploy edge functions
+npm run supabase:functions:deploy
+```
+
+The project uses GitHub Actions for automatic Supabase deployment when changes are pushed to the `main` branch.
 
 ## How can I deploy this project?
 
