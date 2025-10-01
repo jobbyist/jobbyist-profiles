@@ -1,0 +1,64 @@
+name: Deploy to Supabase
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'supabase/functions/**'
+      - 'supabase/migrations/**'
+      - '.github/workflows/deploy-supabase.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      
+      - name: Link Supabase project
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          PROJECT_ID: qwpegrmoqkgtioddyonv
+        run: |
+          supabase link --project-ref $PROJECT_ID
+      
+      - name: Deploy database migrations
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+        run: |
+          supabase db push
+      
+      - name: Deploy edge functions
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          supabase functions deploy ai-assist --no-verify-jwt
+          supabase functions deploy check-domain --no-verify-jwt
+          supabase functions deploy publish-website --no-verify-jwt
+      
+      - name: Set function secrets
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          LOVABLE_API_KEY: ${{ secrets.LOVABLE_API_KEY }}
+          NAMECOM_API_KEY: ${{ secrets.NAMECOM_API_KEY }}
+          NAMECOM_USERNAME: ${{ secrets.NAMECOM_USERNAME }}
+        run: |
+          # Set secrets for all functions
+          echo "LOVABLE_API_KEY=$LOVABLE_API_KEY" > .env.secrets
+          echo "NAMECOM_API_KEY=$NAMECOM_API_KEY" >> .env.secrets
+          echo "NAMECOM_USERNAME=$NAMECOM_USERNAME" >> .env.secrets
+          
+          # Deploy secrets to Supabase
+          supabase secrets set --env-file .env.secrets
+          
+          # Clean up
+          rm .env.secrets
