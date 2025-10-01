@@ -29,7 +29,7 @@ export const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/builder">
+              <Link to="/auth">
                 <Button size="lg" className="group shadow-elegant hover:shadow-glow transition-all duration-300">
                   Start Building
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

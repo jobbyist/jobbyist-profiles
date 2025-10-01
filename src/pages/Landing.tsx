@@ -16,10 +16,10 @@ const Landing = () => {
             </Link>
             
             <div className="flex items-center gap-4">
-              <Link to="/builder">
+              <Link to="/auth">
                 <Button variant="ghost">Examples</Button>
               </Link>
-              <Link to="/builder">
+              <Link to="/auth">
                 <Button>Get Started</Button>
               </Link>
             </div>
