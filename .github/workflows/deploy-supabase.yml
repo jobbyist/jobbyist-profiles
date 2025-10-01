@@ -1,3 +1,20 @@
+# Deploy to Supabase
+#
+# This workflow automatically deploys edge functions and database migrations to Supabase.
+#
+# Required GitHub Secrets:
+# - SUPABASE_ACCESS_TOKEN: Access token from https://supabase.com/dashboard/account/tokens
+# - SUPABASE_DB_PASSWORD: Database password from Supabase project settings
+# - LOVABLE_API_KEY: API key for AI assist function
+# - NAMECOM_API_KEY: Name.com API key for domain registration
+# - NAMECOM_USERNAME: Name.com username for domain registration
+#
+# The workflow is triggered:
+# - Automatically when changes are pushed to main branch (functions or migrations)
+# - Manually via workflow_dispatch
+#
+# For more information, see SUPABASE_DEPLOYMENT.md
+
 name: Deploy to Supabase
 
 on:

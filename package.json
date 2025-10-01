@@ -15,7 +15,8 @@
     "supabase:db:reset": "supabase db reset",
     "supabase:db:push": "supabase db push",
     "supabase:functions:deploy": "supabase functions deploy",
-    "supabase:link": "supabase link --project-ref qwpegrmoqkgtioddyonv"
+    "supabase:link": "supabase link --project-ref qwpegrmoqkgtioddyonv",
+    "supabase:validate": "./scripts/validate-supabase-config.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
