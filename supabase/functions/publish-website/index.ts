@@ -21,7 +21,7 @@ serve(async (req) => {
 
     // Name.com API credentials
     const NAMECOM_API_KEY = Deno.env.get('NAMECOM_API_KEY') || '4841da18ed841dbd4708bb4052a054428172e583';
-    const NAMECOM_USERNAME = Deno.env.get('NAMECOM_USERNAME') || 'jobbyist';
+    const NAMECOM_USERNAME = Deno.env.get('NAMECOM_USERNAME') || 'mykeynotyours-test';
     const NAMECOM_API_URL = 'https://api.dev.name.com';
 
     // Basic auth for Name.com API
