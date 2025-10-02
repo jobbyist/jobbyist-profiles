@@ -38,6 +38,44 @@ export type Database = {
         }
         Relationships: []
       }
+      published_websites: {
+        Row: {
+          created_at: string | null
+          domain: string
+          html_content: string
+          id: string
+          resume_id: string
+          template_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          domain: string
+          html_content: string
+          id?: string
+          resume_id: string
+          template_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          domain?: string
+          html_content?: string
+          id?: string
+          resume_id?: string
+          template_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "published_websites_resume_id_fkey"
+            columns: ["resume_id"]
+            isOneToOne: false
+            referencedRelation: "resumes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       resumes: {
         Row: {
           created_at: string | null
@@ -47,6 +85,8 @@ export type Database = {
           id: string
           is_published: boolean | null
           personal_info: Json
+          published_at: string | null
+          published_url: string | null
           skills: string[]
           slug: string | null
           template_id: string
@@ -62,6 +102,8 @@ export type Database = {
           id?: string
           is_published?: boolean | null
           personal_info?: Json
+          published_at?: string | null
+          published_url?: string | null
           skills?: string[]
           slug?: string | null
           template_id?: string
@@ -77,6 +119,8 @@ export type Database = {
           id?: string
           is_published?: boolean | null
           personal_info?: Json
+          published_at?: string | null
+          published_url?: string | null
           skills?: string[]
           slug?: string | null
           template_id?: string

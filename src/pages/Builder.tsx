@@ -15,6 +15,7 @@ import jsPDF from "jspdf";
 
 const Builder = () => {
   const { toast } = useToast();
+  const [templateId, setTemplateId] = useState("modern");
   const [personalInfo, setPersonalInfo] = useState({
     fullName: "",
     email: "",
@@ -151,6 +152,7 @@ const Builder = () => {
             <div className="sticky top-24">
               <h2 className="text-2xl font-bold mb-4">Live Preview</h2>
               <ResumePreview
+                templateId={templateId}
                 personalInfo={personalInfo}
                 experiences={experiences}
                 education={education}
