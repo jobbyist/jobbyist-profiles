@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Builder from "./pages/Builder";
 import BuilderNew from "./pages/BuilderNew";
 import PublishedResume from "./pages/PublishedResume";
+import Examples from "./pages/Examples";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/builder" element={<Builder />} />
           <Route path="/builder/:id" element={<BuilderNew />} />
           <Route path="/resume/:domain" element={<PublishedResume />} />
+          <Route path="/examples" element={<Examples />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

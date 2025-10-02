@@ -16,7 +16,7 @@ const Landing = () => {
             </Link>
             
             <div className="flex items-center gap-4">
-              <Link to="/auth">
+              <Link to="/examples">
                 <Button variant="ghost">Examples</Button>
               </Link>
               <Link to="/auth">
@@ -28,7 +28,7 @@ const Landing = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-16">
+      <main className="pt-32">
         <HeroSection />
         <FeaturesSection />
       </main>

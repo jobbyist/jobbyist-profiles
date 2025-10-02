@@ -35,9 +35,11 @@ export const HeroSection = () => {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline">
-                View Examples
-              </Button>
+              <Link to="/examples">
+                <Button size="lg" variant="outline">
+                  View Examples
+                </Button>
+              </Link>
             </div>
             
             <div className="flex items-center gap-8 pt-4">
